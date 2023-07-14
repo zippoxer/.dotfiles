@@ -25,12 +25,14 @@ compdef _edit @edit
 
 # @trace
 @trace() {
-    if [ "$#" -ne 2 ]; then
-        echo "Usage: @trace <service-name> <search-term>"
+    if [ "$#" -lt 2 ]; then
+        echo "Usage: @trace <service-name> <grep-parameters>"
         return 1
     fi
 
-    sudo journalctl -u $1 | grep $2
+    local servicename=$1
+    shift  # shift off the service name
+    sudo journalctl -u $servicename | grep "$@"
 }
 _trace() {
     local -a services

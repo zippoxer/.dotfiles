@@ -33,3 +33,5 @@ else
     echo "fzf is already installed."
 fi
 
+# Copy .zshrc
+cp ~/.dotfiles/.zshrc ~/.zshrc
