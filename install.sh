@@ -47,9 +47,17 @@ if [ "$mode" = "postshell" ]; then
       print_header "Installing NVM"
       curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
       [ -s "${HOME}/.nvm/nvm.sh" ] && . "${HOME}/.nvm/nvm.sh"  # source nvm
-      nvm use --lts
+      nvm install --lts && nvm use --lts
     else
       print_header "NVM is already installed"
+    fi
+
+    # Install github-copilot-cli
+    if ! command -v github-copilot-cli &> /dev/null; then
+      print_header "Installing github-copilot-cli"
+      npm install -g @githubnext/github-copilot-cli
+    else
+      print_header "github-copilot-cli is already installed"
     fi
 
     # Install powerlevel10k theme
