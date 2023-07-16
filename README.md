@@ -32,4 +32,4 @@ If anything went wrong, just revert to your previous `.zshrc`:
 mv ~/.zshrc.bak ~/.zshrc
 ```
 
-Note: you can remove everything else manually, if you'd like.
+Note: everything else remains installed.
