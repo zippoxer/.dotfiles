@@ -23,3 +23,13 @@ cd ~
 git clone https://github.com/zippoxer/.dotfiles.git
 ~/.dotfiles/install.sh
 ```
+
+## Uninstallation
+
+If anything went wrong, just revert to your previous `.zshrc`:
+
+```bash
+mv ~/.zshrc.bak ~/.zshrc
+```
+
+Note: you can remove everything else manually, if you'd like.

@@ -76,6 +76,7 @@ if [ "$mode" = "postshell" ]; then
 
     # Copy .zshrc
     print_header "Copying .zshrc file"
+    cp ~/.zshrc ~/.zshrc.bak
     cp ~/.dotfiles/.zshrc ~/.zshrc
 
     # Replace the current shell with Zsh
