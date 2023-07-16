@@ -24,6 +24,8 @@ git clone https://github.com/zippoxer/.dotfiles.git
 ~/.dotfiles/install.sh
 ```
 
+_Note: If you already had a `.zshrc`, it's been backed up to `~/.zshrc.bak`. You may want to copy important parts of it over to the new `.zshrc`._
+
 ## Uninstallation
 
 If anything went wrong, just revert to your previous `.zshrc`:
@@ -32,4 +34,4 @@ If anything went wrong, just revert to your previous `.zshrc`:
 mv ~/.zshrc.bak ~/.zshrc
 ```
 
-Note: everything else remains installed.
+_Note: everything else remains installed._
