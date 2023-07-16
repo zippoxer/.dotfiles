@@ -8,7 +8,7 @@
   - [powerlevel10k theme](https://github.com/romkatv/powerlevel10k)
   - [zsh-nvm](https://github.com/lukechilds/zsh-nvm)
   - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-- [Command-line fuzzy finder (fzf)](https://github.com/junegunn/fzf)
+- [command-line fuzzy finder (fzf)](https://github.com/junegunn/fzf)
 
 ## Try it out with Docker
 
