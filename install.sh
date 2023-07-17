@@ -79,6 +79,9 @@ if [ "$mode" = "postshell" ]; then
     cp ~/.zshrc ~/.zshrc.bak
     cp ~/.dotfiles/.zshrc ~/.zshrc
 
-    # Replace the current shell with Zsh
+    # Set the default shell to zsh
+    chsh -s $(which zsh)
+
+    # Replace the current shell with zsh
     exec zsh -l
 fi

@@ -13,7 +13,7 @@
 ## Try it out with Docker
 
 ```bash
-docker-compose build && docker-compose run ubuntu
+docker-compose build && docker-compose run playground
 ```
 
 ## Installation

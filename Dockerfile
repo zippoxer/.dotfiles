@@ -9,4 +9,4 @@ COPY . /root/.dotfiles
 # Run your installation script
 RUN /root/.dotfiles/install.sh
 
-CMD ["/bin/bash"]
+CMD ["/bin/zsh"]

@@ -1,8 +1,10 @@
 version: '3'
 services:
-  ubuntu:
+  playground:
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
       - .:/root/.dotfiles
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
