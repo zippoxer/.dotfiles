@@ -72,7 +72,14 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 export NVM_LAZY_LOAD=true
 
-plugins=(git zsh-autosuggestions zsh-nvm)
+plugins=(
+    git
+    docker
+    docker-compose
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-nvm
+)
 
 source $ZSH/oh-my-zsh.sh
 

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 mode=$1
 
@@ -17,7 +18,7 @@ if [ "$mode" != "postshell" ]; then
         command -v $cmd &> /dev/null || to_install+=($cmd)
     done
     print_header "Installing dependencies (${to_install[@]})"
-    (( ${#to_install[@]} )) && sudo apt-get install -y ${to_install[@]}
+    sudo apt-get install -y build-essential ripgrep ${to_install[@]}
 
     # Install oh-my-zsh if not present
     if [ ! -d "${HOME}/.oh-my-zsh" ]; then
@@ -46,11 +47,11 @@ if [ "$mode" = "postshell" ]; then
     if [ ! -d "${HOME}/.nvm" ]; then
       print_header "Installing NVM"
       curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-      [ -s "${HOME}/.nvm/nvm.sh" ] && . "${HOME}/.nvm/nvm.sh"  # source nvm
-      nvm install --lts && nvm use --lts
     else
       print_header "NVM is already installed"
     fi
+    [ -s "${HOME}/.nvm/nvm.sh" ] && . "${HOME}/.nvm/nvm.sh"  # source nvm
+    nvm install --lts && nvm use --lts
 
     # Install github-copilot-cli
     if ! command -v github-copilot-cli &> /dev/null; then
@@ -69,10 +70,18 @@ if [ "$mode" = "postshell" ]; then
     # Install zsh-autosuggestions
     install_from_git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" 'https://github.com/zsh-users/zsh-autosuggestions'
 
+    # Install zsh-syntax-highlighting
+    install_from_git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+
     # Install fzf
     FZF_DIR="${HOME}/.fzf"
     install_from_git "$FZF_DIR" 'https://github.com/junegunn/fzf.git'
     "$FZF_DIR"/install --all
+
+    # Install Rust and then dust
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    source "$HOME/.cargo/env"
+    cargo install du-dust
 
     # Copy .zshrc
     print_header "Copying .zshrc file"
